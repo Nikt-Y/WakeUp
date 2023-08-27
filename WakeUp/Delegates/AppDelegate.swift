@@ -14,6 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let defaultValues = [
+            keyGoodBG1: 0,
+            keyGoodBG2: 2
+        ] as [String : Int]
+        
+        UserDefaults.standard.register(defaults: defaultValues)
         return true
     }
     

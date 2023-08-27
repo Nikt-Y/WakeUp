@@ -40,7 +40,7 @@ class BalanceNode: SKNode {
 extension BalanceNode {
     
     private func setupBG() {
-        bg = SKShapeNode(rectOf: CGSize(width: 150, height: 48), cornerRadius: 5)
+        bg = SKShapeNode(rectOf: CGSize(width: 150, height: 44), cornerRadius: 5)
         bg.fillColor = .init(hex: 0x011687)
         bg.lineWidth = 4
         bg.strokeColor = .black

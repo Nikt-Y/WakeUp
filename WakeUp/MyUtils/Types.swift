@@ -31,3 +31,6 @@ var screenSize: CGSize {
 
 let highscoreKey = "highscore"
 let balanceKey = "balance"
+let bgKey = "bgKey"
+let keyGoodBG1 = "BACKGROUND 1"
+let keyGoodBG2 = "BACKGROUND 2"

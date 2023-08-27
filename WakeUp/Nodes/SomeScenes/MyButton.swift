@@ -11,9 +11,9 @@ class MyButton: SKNode {
     
     // MARK: - Properties
     var action: (() -> ())?
-    var rectangle: SKShapeNode!
-    var label: SKLabelNode!
-    var spriteNode: SKSpriteNode!
+    private var rectangle: SKShapeNode!
+    private var label: SKLabelNode!
+    private var spriteNode: SKSpriteNode!
     
     private var isInside = false {
         didSet {
@@ -22,6 +22,11 @@ class MyButton: SKNode {
     }
     
     // MARK: - Initializers
+    override init() {
+        super.init()
+        isUserInteractionEnabled = true
+    }
+    
     init(rectangleSize: CGSize, cornerRadius: CGFloat, rectangleColor: UIColor, strokeColor: UIColor, text: String, textColor: UIColor, fontSize: CGFloat) {
         super.init()
         

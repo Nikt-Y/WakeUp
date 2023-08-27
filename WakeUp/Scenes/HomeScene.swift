@@ -58,7 +58,8 @@ class HomeScene: SKScene {
 extension HomeScene {
     
     private func setupBGnode() {
-        bgNode = SKSpriteNode(imageNamed: "background1")
+        let bgName = UserDefaults.standard.string(forKey: bgKey) ?? "background1"
+        bgNode = SKSpriteNode(imageNamed: bgName)
         bgNode.zPosition = -1.0
         bgNode.position = CGPoint(x: frame.midX, y: frame.midY)
         let aspectRatio = bgNode.size.width / bgNode.size.height

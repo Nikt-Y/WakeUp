@@ -49,8 +49,6 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         guard let touch = touches.first else { return }
-        
-        let loc = touch.location(in: self)
     }
     
     
@@ -95,7 +93,8 @@ extension GameScene {
 extension GameScene {
     
     private func addBG() {
-        bgNode = SKSpriteNode(imageNamed: "background1")
+        let bgName = UserDefaults.standard.string(forKey: bgKey) ?? "background1"
+        bgNode = SKSpriteNode(imageNamed: bgName)
         bgNode.zPosition = -1.0
         bgNode.position = CGPoint(x: frame.midX, y: frame.midY)
         let aspectRatio = bgNode.size.width / bgNode.size.height
