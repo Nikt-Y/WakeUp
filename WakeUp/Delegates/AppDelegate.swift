@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             keyStyleEmpty: 2,
             keyStyleRandom: 2,
             keyStyleSunrise: 2,
-            balanceKey: 100,
+            balanceKey: 0,
             highscoreKey: 0
         ] as [String : Int]
         

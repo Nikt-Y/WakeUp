@@ -90,7 +90,7 @@ extension HomeScene {
     }
     
     private func setupEasyModeBtn() {
-        let requiredScore = 5
+        let requiredScore = 1
         if highscore >= requiredScore {
             easyModeBtn = MyButton(rectangleSize: CGSize(width: 224, height: 61), cornerRadius: 10, rectangleColor: .init(hex: 0x00126F), strokeColor: .cyan, text: "EASY MODE", textColor: .cyan, fontSize: 30)
             easyModeBtn.action = { [self] in
@@ -109,7 +109,7 @@ extension HomeScene {
     }
     
     private func setupMediumModeBtn() {
-        let requiredScore = 10
+        let requiredScore = 5
         if highscore >= requiredScore {
             mediumModeBtn = MyButton(rectangleSize: CGSize(width: 224, height: 61), cornerRadius: 10, rectangleColor: .init(hex: 0x00126F), strokeColor: .cyan, text: "MEDIUM MODE", textColor: .cyan, fontSize: 30)
             mediumModeBtn.action = { [self] in
@@ -128,7 +128,7 @@ extension HomeScene {
     }
     
     private func setupHardModeBtn() {
-        let requiredScore = 20
+        let requiredScore = 15
         if highscore >= requiredScore {
             hardModeBtn = MyButton(rectangleSize: CGSize(width: 224, height: 61), cornerRadius: 10, rectangleColor: .init(hex: 0x00126F), strokeColor: .cyan, text: "HARD MODE", textColor: .cyan, fontSize: 30)
             hardModeBtn.action = { [self] in
