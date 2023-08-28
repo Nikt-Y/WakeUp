@@ -66,7 +66,7 @@ extension ShopScene {
             scene.scaleMode = .aspectFill
             self.view?.presentScene(scene, transition: .crossFade(withDuration: 0.5))
         }
-        backBtn.zPosition = 1.0
+        backBtn.zPosition = 5.0
         let safeAreaInsets = view!.safeAreaInsets;
         let size = backBtn.calculateAccumulatedFrame().size
         backBtn.position = CGPoint(x: size.width/2, y: -safeAreaInsets.top - size.height/2 + frame.maxY)
@@ -91,23 +91,72 @@ extension ShopScene {
     }
     
     private func setupGoods() {
-        let good1Status = getStatus(num: UserDefaults.standard.integer(forKey: keyGoodBG1))
-        let good1 = Good(shopScene: self, goodName: keyGoodBG1, image: "good", cost: 0, status: good1Status)
+        let good1Status = getStatus(num: UserDefaults.standard.integer(forKey: keyBgSunrise1))
+        let good1 = Good(shopScene: self, type: .background, goodName: keyBgSunrise1, image: "sunrise1Little", cost: 0, status: good1Status)
         good1.action = { [self] in
-            bgNode.texture = SKTexture(imageNamed: "background1")
-            UserDefaults.standard.set("background1", forKey: bgKey)
+            bgNode.texture = SKTexture(imageNamed: "sunrise1")
+            UserDefaults.standard.set("sunrise1", forKey: bgKey)
         }
         
-        let good2Status = getStatus(num: UserDefaults.standard.integer(forKey: keyGoodBG2))
-        let good2 = Good(shopScene: self, goodName: keyGoodBG2, image: "background2", cost: 1, status: good2Status)
+        let good2Status = getStatus(num: UserDefaults.standard.integer(forKey: keyBgSunrise2))
+        let good2 = Good(shopScene: self, type: .background, goodName: keyBgSunrise2, image: "sunrise2Little", cost: 1, status: good2Status)
         good2.action = { [self] in
-            bgNode.texture = SKTexture(imageNamed: "background2")
-            UserDefaults.standard.set("background2", forKey: bgKey)
+            bgNode.texture = SKTexture(imageNamed: "sunrise2")
+            UserDefaults.standard.set("sunrise2", forKey: bgKey)
         }
         
-        goods.append(good1)
-        goods.append(good2)
+        let good3Status = getStatus(num: UserDefaults.standard.integer(forKey: keyBgFutureCity))
+        let good3 = Good(shopScene: self, type: .background, goodName: keyBgFutureCity, image: "futureCityLittle", cost: 2, status: good3Status)
+        good3.action = { [self] in
+            bgNode.texture = SKTexture(imageNamed: "futureCity")
+            UserDefaults.standard.set("futureCity", forKey: bgKey)
+        }
+
+        let good4Status = getStatus(num: UserDefaults.standard.integer(forKey: keyBgCyberCity))
+        let good4 = Good(shopScene: self, type: .background, goodName: keyBgCyberCity, image: "cyberCityLittle", cost: 3, status: good4Status)
+        good4.action = { [self] in
+            bgNode.texture = SKTexture(imageNamed: "cyberCity")
+            UserDefaults.standard.set("cyberCity", forKey: bgKey)
+        }
+
+        let good5Status = getStatus(num: UserDefaults.standard.integer(forKey: keyBgNightCity))
+        let good5 = Good(shopScene: self, type: .background, goodName: keyBgNightCity, image: "nightCityLittle", cost: 4, status: good5Status)
+        good5.action = { [self] in
+            bgNode.texture = SKTexture(imageNamed: "nightCity")
+            UserDefaults.standard.set("nightCity", forKey: bgKey)
+        }
+
+        let good6Status = getStatus(num: UserDefaults.standard.integer(forKey: keyStyleDefault))
+        let good6 = Good(shopScene: self, type: .style, goodName: keyStyleDefault, image: "styleDefault", cost: 4, status: good6Status)
+        good6.action = {
+            UserDefaults.standard.set("styleDefault", forKey: styleKey)
+        }
         
+        let good7Status = getStatus(num: UserDefaults.standard.integer(forKey: keyStyleNight))
+        let good7 = Good(shopScene: self, type: .style, goodName: keyStyleNight, image: "styleNight", cost: 5, status: good7Status)
+        good7.action = {
+            UserDefaults.standard.set("styleNight", forKey: styleKey)
+        }
+
+        let good8Status = getStatus(num: UserDefaults.standard.integer(forKey: keyStyleEmpty))
+        let good8 = Good(shopScene: self, type: .style, goodName: keyStyleEmpty, image: "styleEmpty", cost: 6, status: good8Status)
+        good8.action = {
+            UserDefaults.standard.set("styleEmpty", forKey: styleKey)
+        }
+
+        let good9Status = getStatus(num: UserDefaults.standard.integer(forKey: keyStyleSunrise))
+        let good9 = Good(shopScene: self, type: .style, goodName: keyStyleSunrise, image: "styleSunrise", cost: 7, status: good9Status)
+        good9.action = {
+            UserDefaults.standard.set("styleSunrise", forKey: styleKey)
+        }
+
+        let good10Status = getStatus(num: UserDefaults.standard.integer(forKey: keyStyleRandom))
+        let good10 = Good(shopScene: self, type: .style, goodName: keyStyleRandom, image: "styleRandom", cost: 8, status: good10Status)
+        good10.action = {
+            UserDefaults.standard.set("styleRandom", forKey: styleKey)
+        }
+
+        goods.append(contentsOf: [good1, good2, good3, good4, good5, good6, good7, good8, good9, good10])
         for good in goods {
             scrollNode.addScrollChild(good)
         }
@@ -137,6 +186,7 @@ extension ShopScene {
                 
                 self.balance -= good.cost
                 UserDefaults.standard.set(self.balance, forKey: balanceKey)
+                self.balanceNode.updateBalance()
                 good.setNewStatus(newStatus: .bought)
             })
         alertNode.isHidden = false
@@ -162,7 +212,7 @@ extension ShopScene {
     
     func chooseGood(choosen: Good) {
         for good in goods {
-            if good.status != .locked {
+            if good.status != .locked, good.type == choosen.type {
                 good.setNewStatus(newStatus: .bought)
             }
         }

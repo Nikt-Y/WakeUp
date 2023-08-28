@@ -121,8 +121,9 @@ extension GameScene {
     }
     
     private func setupBedrooms(count: Int) {
+        let style = UserDefaults.standard.string(forKey: styleKey) ?? "styleDefault"
         for i in bedrooms.count..<count {
-            let newBedroom = BedroomNode(name: "bedroom1_\(i+1)", gameScene: self)
+            let newBedroom = BedroomNode(name: "bedroom_\(style)_\(i+1)", gameScene: self)
             bedrooms.append(newBedroom)
             subBGNode.addChild(newBedroom)
         }

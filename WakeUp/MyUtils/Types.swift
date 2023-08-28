@@ -32,5 +32,17 @@ var screenSize: CGSize {
 let highscoreKey = "highscore"
 let balanceKey = "balance"
 let bgKey = "bgKey"
-let keyGoodBG1 = "BACKGROUND 1"
-let keyGoodBG2 = "BACKGROUND 2"
+let styleKey = "styleKey"
+
+// goods
+let keyBgSunrise1 = "Sunrise 1"
+let keyBgSunrise2 = "Sunrise 2"
+let keyBgFutureCity = "Future City"
+let keyBgCyberCity = "Cyber City"
+let keyBgNightCity = "Night City"
+
+let keyStyleDefault = "Default bedrooms"
+let keyStyleNight = "Night bedrooms"
+let keyStyleEmpty = "Empty bedrooms"
+let keyStyleSunrise = "Sunrise bedrooms"
+let keyStyleRandom = "Random bedrooms"

@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum GoodType {
+    case background
+    case style
+}
+
 enum GoodStatus: Int {
     case choosen = 0
     case bought = 1

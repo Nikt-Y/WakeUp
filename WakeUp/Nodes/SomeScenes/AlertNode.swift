@@ -88,13 +88,13 @@ extension AlertNode {
     
     private func setupButtons() {
         let btnsSize = CGSize(width: 110, height: 32)
-        cancelBtn = MyButton(rectangleSize: btnsSize, cornerRadius: 20, rectangleColor: .black, strokeColor: .red, text: "CANCEL", textColor: .red, fontSize: 14)
+        cancelBtn = MyButton(rectangleSize: btnsSize, cornerRadius: 10, rectangleColor: .black, strokeColor: .red, text: "CANCEL", textColor: .red, fontSize: 14)
         cancelBtn.action = cancelAction
         cancelBtn.zPosition = 51.0
         cancelBtn.position = CGPoint(x: -node.frame.size.width/2 + btnsSize.width/2 + 19, y: -node.frame.height/2 + btnsSize.height/2 + 16)
         node.addChild(cancelBtn)
         
-        acceptBtn = MyButton(rectangleSize: btnsSize, cornerRadius: 20, rectangleColor: .black, strokeColor: .green, text: "ACCEPT", textColor: .green, fontSize: 14)
+        acceptBtn = MyButton(rectangleSize: btnsSize, cornerRadius: 10, rectangleColor: .black, strokeColor: .green, text: "ACCEPT", textColor: .green, fontSize: 14)
         acceptBtn.action = acceptAction
         acceptBtn.zPosition = 51.0
         acceptBtn.position = CGPoint(x: node.frame.size.width/2 - btnsSize.width/2 - 19, y: -node.frame.height/2 + btnsSize.height/2 + 16)

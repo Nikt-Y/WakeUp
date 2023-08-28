@@ -13,10 +13,12 @@ class Good: SKNode {
 
     private var bg: SKShapeNode!
     private var goodImage: SKSpriteNode!
+    private var goodTypeLabel: SKLabelNode!
     private var goodNameLabel: SKLabelNode!
     private var costLabel: SKLabelNode!
     private(set) var cost: Int = 0
-    private(set) var status: GoodStatus = .choosen
+    private(set) var status: GoodStatus = .locked
+    private(set) var type: GoodType = .background
     private var shopScene: ShopScene!
     
     private var isInside = false {
@@ -26,15 +28,18 @@ class Good: SKNode {
     }
     
     // MARK: - Initializers
-    init(shopScene: ShopScene, goodName: String, image: String, cost: Int, status: GoodStatus) {
+    init(shopScene: ShopScene, type: GoodType,goodName: String, image: String, cost: Int, status: GoodStatus) {
         super.init()
         self.shopScene = shopScene
         self.status = status
         self.name = goodName
+        self.cost = cost
+        self.type = type
         
         setupBg()
         setupImage(image: image)
-        setupNameLabel(goodName: goodName)
+        setupTypeLabel()
+        setupNameLabel()
         setupCostLabel()
     }
     
@@ -75,7 +80,7 @@ class Good: SKNode {
 extension Good {
 
     private func setupBg() {
-        bg = SKShapeNode(rectOf: CGSize(width: 172, height: 376), cornerRadius: 10)
+        bg = SKShapeNode(rectOf: CGSize(width: 172, height: 286), cornerRadius: 10)
         bg.fillColor = .black
         bg.strokeColor = status.color
         addChild(bg)
@@ -84,20 +89,42 @@ extension Good {
     private func setupImage(image: String) {
         goodImage = SKSpriteNode(imageNamed: image)
         goodImage.zPosition = 1.0
-        goodImage.size = CGSize(width: 145, height: 313)
+        goodImage.size = CGSize(width: 145, height: 214)
+        goodImage.position = CGPoint(x: 0, y: -5)
         bg.addChild(goodImage)
     }
     
-    private func setupNameLabel(goodName: String) {
+    private func setupTypeLabel() {
+        goodTypeLabel = SKLabelNode(fontNamed: "Hardpixel")
+        goodTypeLabel.preferredMaxLayoutWidth = 165
+        switch type {
+        case .background:
+            goodTypeLabel.text = "Background:"
+        case .style:
+            goodTypeLabel.text = "Style:"
+        }
+        goodTypeLabel.fontColor = status.color
+        goodTypeLabel.fontSize = 15
+        goodTypeLabel.preferredMaxLayoutWidth = bg.frame.size.width - 6
+        goodTypeLabel.verticalAlignmentMode = .top
+        goodTypeLabel.horizontalAlignmentMode = .center
+        goodTypeLabel.numberOfLines = 0
+        goodTypeLabel.position = CGPoint(x: 0, y: bg.frame.height/2 - 3)
+        bg.addChild(goodTypeLabel)
+    }
+    
+    private func setupNameLabel() {
         goodNameLabel = SKLabelNode(fontNamed: "Hardpixel")
-        goodNameLabel.text = goodName
+        goodNameLabel.preferredMaxLayoutWidth = 165
+        goodNameLabel.text = self.name!
         goodNameLabel.fontColor = status.color
-        goodNameLabel.fontSize = 20
+        goodNameLabel.fontSize = 15
         goodNameLabel.preferredMaxLayoutWidth = bg.frame.size.width - 6
         goodNameLabel.verticalAlignmentMode = .top
         goodNameLabel.horizontalAlignmentMode = .center
-        goodNameLabel.position = CGPoint(x: 0, y: bg.frame.height/2 - 10)
-        bg.addChild(goodNameLabel)
+        goodNameLabel.numberOfLines = 0
+        goodNameLabel.position = CGPoint(x: 0, y: -goodTypeLabel.frame.height/2 - 5)
+        goodTypeLabel.addChild(goodNameLabel)
     }
     
     private func setupCostLabel() {
@@ -108,11 +135,11 @@ extension Good {
             costLabel.text = "UNLOCKED"
         }
         costLabel.fontColor = status.color
-        costLabel.fontSize = 20
+        costLabel.fontSize = 18
         costLabel.preferredMaxLayoutWidth = bg.frame.size.width - 6
         costLabel.verticalAlignmentMode = .bottom
         costLabel.horizontalAlignmentMode = .center
-        costLabel.position = CGPoint(x: 0, y: -bg.frame.height/2 + 10)
+        costLabel.position = CGPoint(x: 0, y: -bg.frame.height/2 + 9)
         bg.addChild(costLabel)
     }
 }
@@ -131,7 +158,6 @@ extension Good {
     }
     
     func onSelect() {
-        print("qwe")
         switch status {
         case .bought:
             (action ?? {})()
@@ -152,6 +178,7 @@ extension Good {
         UserDefaults.standard.set(newStatus.rawValue, forKey: self.name!)
         status = newStatus
         bg.strokeColor = newStatus.color
+        goodTypeLabel.fontColor = newStatus.color
         goodNameLabel.fontColor = newStatus.color
         costLabel.fontColor = newStatus.color
         if newStatus == .locked {

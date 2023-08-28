@@ -14,12 +14,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let defaultValues = [
-            keyGoodBG1: 0,
-            keyGoodBG2: 2
+        let defaultInts = [
+            keyBgSunrise1: 0,
+            keyBgSunrise2: 2,
+            keyBgCyberCity: 2,
+            keyBgNightCity: 2,
+            keyBgFutureCity: 2,
+            
+            keyStyleDefault: 0,
+            keyStyleNight: 2,
+            keyStyleEmpty: 2,
+            keyStyleRandom: 2,
+            keyStyleSunrise: 2,
+            balanceKey: 100,
+            highscoreKey: 0
         ] as [String : Int]
         
-        UserDefaults.standard.register(defaults: defaultValues)
+        let defaultStrings = [
+            bgKey: "sunrise1",
+            styleKey: "styleDefault"
+        ] as [String : String]
+        
+        UserDefaults.standard.register(defaults: defaultInts)
+        UserDefaults.standard.register(defaults: defaultStrings)
         return true
     }
     
