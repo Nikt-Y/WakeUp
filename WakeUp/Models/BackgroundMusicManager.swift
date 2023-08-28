@@ -30,7 +30,7 @@ class BackgroundMusicManager: NSObject, AVAudioPlayerDelegate {
         guard !currentMusicFiles.isEmpty else { return }
         
         let nextFile = currentMusicFiles[currentIndex]
-        if currentMusicName == nextFile {
+        if audioPlayer?.isPlaying ?? false, currentMusicName == nextFile {
             return
         }
         currentMusicName = nextFile
