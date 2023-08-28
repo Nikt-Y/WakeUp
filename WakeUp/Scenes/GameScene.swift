@@ -43,6 +43,8 @@ class GameScene: SKScene {
     //MARK: - Lifecycle
     
     override func didMove(to view: SKView) {
+        MusicPlayer.shared.stopBackgroundMusic()
+        
         setupNodes()
     }
     
