@@ -27,7 +27,7 @@ class GameScene: SKScene {
     private(set) var bedroomsCount: Int!
     private var numOfAwakened: Int = 0
     private var gameSpeed: Double = 1
-    private var complication: Double = 0.8
+    private var complication: Double = 1.0
     private var isTimeSkipping: Bool = false
     
     //MARK: - Initializes
@@ -43,8 +43,7 @@ class GameScene: SKScene {
     //MARK: - Lifecycle
     
     override func didMove(to view: SKView) {
-        MusicPlayer.shared.stopBackgroundMusic()
-        
+        BackgroundMusicManager.shared.setupBackgroundMusic(forScene: self, withFiles: ["gameMusic1", "gameMusic2", "gameMusic3"], repeatForever: true, playRandomly: true)
         setupNodes()
     }
     

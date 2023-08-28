@@ -187,9 +187,9 @@ extension BedroomNode {
     
     func getCurrentStage() -> Status {
         let current = stageIndicator.position.x/stageLine.size.width
-        if current > 0.45 && current < 0.55 {
+        if current > 0.43 && current < 0.58 {
             return .excellent
-        } else if current > 0.3 && current < 0.7 {
+        } else if current > 0.33 && current < 0.67 {
             return .good
         } else {
             return .bad
@@ -212,9 +212,11 @@ extension BedroomNode {
             } else if timeDif < 0 {
                 startStatusAnimation(status: .nearly)
                 gameScene.addScore(by: 1)
+                self.run(.playSoundFileNamed("success.mp3", waitForCompletion: false))
             } else {
                 startStatusAnimation(status: stage)
                 gameScene.addScore(by: 2)
+                self.run(.playSoundFileNamed("success.mp3", waitForCompletion: false))
             }
         } else {
             startStatusAnimation(status: .bad)
@@ -226,12 +228,14 @@ extension BedroomNode {
         guard healthCount > 0 else { return }
         let toRed = SKAction.colorize(with: .red, colorBlendFactor: 1, duration: 0.3)
         let toOrig = SKAction.colorize(with: .white, colorBlendFactor: 1, duration: 0.3)
+        let alarmSound = SKAction.playSoundFileNamed("alarm.mp3", waitForCompletion: false)
+        let badSound = SKAction.playSoundFileNamed("bad.mp3", waitForCompletion: false)
         healthCount -= 1
         if healthCount == 0 {
             gameScene.gameOverAnimate(loser: self)
-            bedroomNode.run(.repeat(.sequence([toRed, toOrig]), count: 3))
+            bedroomNode.run(.repeat(.sequence([alarmSound, toRed, toOrig]), count: 3))
         } else {
-            bedroomNode.run(.repeat(.sequence([toRed, toOrig]), count: 1))
+            bedroomNode.run(.repeat(.sequence([badSound, toRed, toOrig]), count: 1))
         }
     }
     
@@ -322,13 +326,22 @@ extension BedroomNode {
     }
     
     private func setNewSleepStageWithAnimation() {
-        let newPos = CGFloat.random(in: 0...stageLine.size.width)
-        stageIndicator.run(.moveTo(x: newPos, duration: 0.3))
+        var newPos: CGFloat = 0
         direction = Bool.random() ? .left : .right
+        if time < 390 {
+            if direction == .right {
+                newPos = CGFloat.random(in: 0...stageLine.size.width*0.3)
+            } else {
+                newPos = CGFloat.random(in: stageLine.size.width*0.67...stageLine.size.width)
+            }
+        } else {
+            newPos = CGFloat.random(in: 0...stageLine.size.width)
+        }
+        stageIndicator.run(.moveTo(x: newPos, duration: 0.3))
     }
     
     private func setNewTimeWithAnimation() {
-        time = Int.random(in: 390...525)
+        time = Int.random(in: 360...525)
         let hours = time / 60
         let minutes = time % 60
         let fadeOut = SKAction.fadeOut(withDuration: 0.25)

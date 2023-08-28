@@ -34,14 +34,7 @@ class HomeScene: SKScene {
     //MARK: - Lifecycle
     
     override func didMove(to view: SKView) {
-//        MusicPlayer.shared.startBackgroundMusic()
-//        self.run(.playSoundFileNamed("startBackgroundMusic", waitForCompletion: false))
-//        let backgroundSound = SKAudioNode(fileNamed: "startBackgroundMusic.mp3")
-//        backgroundSound.autoplayLooped = true
-//        self.addChild(backgroundSound)
-//        AudioManager.shared.addBackgroundMusic(to: self)
-//        SKTAudio.sharedInstance().playBackgroundMusic("startBackgroundMusic.mp3")
-        MusicPlayer.shared.startBackgroundMusic()
+        BackgroundMusicManager.shared.setupBackgroundMusic(forScene: self, withFiles: ["startBackgroundMusic"], repeatForever: true)
         setupBGnode()
         setupPlayBG()
         setupTutorialBtn()

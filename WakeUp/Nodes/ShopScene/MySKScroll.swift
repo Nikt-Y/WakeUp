@@ -79,7 +79,7 @@ class MySKScroll: SKNode {
             return
         }
 
-        let dy = currentTouch.y - initialTouch.y
+        let dy = (currentTouch.y - initialTouch.y) * 1.3
         var newY = content.position.y + dy
 
         newY = max(min(newY, initialPositionY + scrollSize), initialPositionY)

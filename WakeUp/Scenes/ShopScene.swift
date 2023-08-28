@@ -67,18 +67,18 @@ extension ShopScene {
             self.view?.presentScene(scene, transition: .crossFade(withDuration: 0.5))
         }
         backBtn.zPosition = 5.0
-        let safeAreaInsets = view!.safeAreaInsets;
+        let safeAreaInsets = view!.safeAreaInsets
         let size = backBtn.calculateAccumulatedFrame().size
-        backBtn.position = CGPoint(x: size.width/2, y: -safeAreaInsets.top - size.height/2 + frame.maxY)
+        backBtn.position = CGPoint(x: safeAreaInsets.left + size.width/2, y: -safeAreaInsets.top - size.height/2 + frame.maxY)
         addChild(backBtn)
     }
     
     private func setupBalanceNode() {
         balanceNode = BalanceNode()
         balanceNode.zPosition = 1.0
-        let safeAreaInsets = view!.safeAreaInsets;
+        let safeAreaInsets = view!.safeAreaInsets
         let size = balanceNode.calculateAccumulatedFrame().size
-        balanceNode.position = CGPoint(x: frame.maxX - size.width/2, y: -safeAreaInsets.top - size.height/2 + frame.maxY)
+        balanceNode.position = CGPoint(x: frame.maxX - size.width/2 - safeAreaInsets.right, y: -safeAreaInsets.top - size.height/2 + frame.maxY)
         addChild(balanceNode)
     }
     

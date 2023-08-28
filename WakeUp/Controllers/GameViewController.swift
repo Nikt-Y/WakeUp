@@ -24,8 +24,8 @@ class GameViewController: UIViewController {
         }
         
 //        let scene = GameScene(size: CGSize(width: screenSize.width, height: screenSize.height), bedroomsCount: 6)
-//        let scene = GameOverScene(size: screenSize, score: 0, bedroomsCount: 6)
-        let scene = HomeScene(size: screenSize)
+        let scene = GameOverScene(size: screenSize, score: 0, bedroomsCount: 6)
+//        let scene = HomeScene(size: screenSize)
         scene.scaleMode = .aspectFill
         
         

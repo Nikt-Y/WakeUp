@@ -41,6 +41,7 @@ class GameOverScene: SKScene {
     //MARK: - Lifecycle
     
     override func didMove(to view: SKView) {
+        BackgroundMusicManager.shared.setupBackgroundMusic(forScene: self, withFiles: ["burnedOut", "gameOver"])
         setupBGnode()
         setupAfterGameNode()
     }
