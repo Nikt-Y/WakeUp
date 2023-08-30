@@ -50,6 +50,14 @@ To get started, clone the repository:
 ```bash
 git clone https://github.com/Nikt-Y/WakeUp.git
 ```
+### Launching Through Xcode
+
+1. Open the project folder and locate the `.xcodeproj` file.
+2. Double-click on the `.xcodeproj` file to open the project in Xcode.
+3. Make sure to select the appropriate target device or simulator.
+4. Press `Cmd + R` or click the "Run" button in the top-left corner to build and run the project.
+
+Once the build is successful, the game will launch on your target device or simulator.
 
 ## How to Play
 
