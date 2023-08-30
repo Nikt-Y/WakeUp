@@ -24,7 +24,7 @@ Welcome to **WakeUp**, a unique game where you serve as an alarm clock. Your mis
 - Rewards and penalties to keep you on your toes
 - In-Game store to customize your experience
 
-![Main Gameplay](/ReadMeFiles/gameplay-screenshot.png)
+![Main Gameplay](/ReadMeFiles/gameplay-screenshot.png) ![Shop](/ReadMeFiles/shop-screenshot.png)
 
 ## Tech Stack
 
