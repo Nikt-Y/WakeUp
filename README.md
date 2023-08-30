@@ -1,6 +1,6 @@
 # WakeUp
 
-![Game Logo](/ReadMeFiles/logo)
+![Game Logo](/ReadMeFiles/logo.png)
 
 ## Overview
 
@@ -24,7 +24,7 @@ Welcome to **WakeUp**, a unique game where you serve as an alarm clock. Your mis
 - Rewards and penalties to keep you on your toes
 - In-Game store to customize your experience
 
-![Main Gameplay](/ReadMeFiles/gameplay-screenshot)
+![Main Gameplay](/ReadMeFiles/gameplay-screenshot.png)
 
 ## Tech Stack
 
@@ -58,7 +58,7 @@ git clone https://github.com/Nikt-Y/WakeUp.git
 3. **Trigger the Alarm**: Aim to wake people up in the optimal (green/yellow) sleep phase, closest to the set alarm time.
 4. **Manage Rewards & Penalties**: Earn lives for perfect wake-ups, but be cautious of penalties.
 
-![How to Play](/ReadMeFiles/how-to-play-gif)
+![How to Play](/ReadMeFiles/how-to-play-gif.gif)
 
 ## Contributing
 
