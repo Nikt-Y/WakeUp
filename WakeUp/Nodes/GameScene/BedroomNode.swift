@@ -10,13 +10,13 @@ import SpriteKit
 class BedroomNode: SKNode {
     
     //MARK: - Properties
-    private var node: SKShapeNode!
-    private var bedroomNode: SKSpriteNode!
-    private var healthNode: SKNode!
-    private var timeLabel: SKLabelNode!
-    private var stageLine: SKSpriteNode!
-    private var stageIndicator: SKSpriteNode!
-    private var label: SKLabelNode!
+    private var node = SKShapeNode()
+    private var bedroomNode = SKSpriteNode()
+    private var healthNode = SKNode()
+    private var timeLabel = SKLabelNode()
+    private var stageLine = SKSpriteNode()
+    private var stageIndicator = SKSpriteNode()
+    private var label = SKLabelNode()
     private var nearlyCount = 0
     private var excellentCount = 0
     
@@ -32,13 +32,13 @@ class BedroomNode: SKNode {
     }
     private var startIndPos: Double = 0 // 0...1
     private var indicatorSpeed: CGFloat = 1.0
-    private var healthCount: Int! {
+    private var healthCount: Int {
         didSet {
             setupHealthNode()
         }
     }
-    private var time: Int!
-    private var gameScene: GameScene!
+    private var time: Int
+    private var gameScene: GameScene
     private(set) var isAwakened: Bool = false {
         didSet {
             if isAwakened {
@@ -49,12 +49,13 @@ class BedroomNode: SKNode {
     
     //MARK: - Initializes
     init(name: String, gameScene: GameScene, time: Int = 360, health: Int = 3) {
-        super.init()
-        self.name = name
         self.time = time
         self.healthCount = health
         self.gameScene = gameScene
         
+        super.init()
+        self.name = name
+
         isUserInteractionEnabled = true
         setupNode()
         setupBedroomNode()
@@ -97,7 +98,7 @@ extension BedroomNode {
     }
     
     private func setupHealthNode() {
-        if ((healthNode != nil) && healthNode.parent != nil) {
+        if (healthNode.parent != nil) {
             healthNode.removeFromParent()
         }
         healthNode = SKNode()

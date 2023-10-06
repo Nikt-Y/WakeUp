@@ -10,22 +10,25 @@ import GameplayKit
 
 class GameOverScene: SKScene {
     //MARK: - Properties
-    private var bgNode: SKSpriteNode!
-    private var afterGameNode: AfterGameNode!
+    private var bgNode = SKSpriteNode()
+    private var afterGameNode = AfterGameNode()
     
     //MARK: - Settings
-    private var score: Int!
+    private var score: Int = 0
     private(set) var bedroomsCount: Int = 0
     private var highscore: Int = 0
     private var balance: Int = 0
+    private var wasStopped: Bool = false
     
     //MARK: - Initializes
-    init(size: CGSize, score: Int, bedroomsCount: Int) {
-        super.init(size: size)
+    init(size: CGSize, score: Int, bedroomsCount: Int, wasStopped: Bool = false) {
         self.score = score
         self.bedroomsCount = bedroomsCount
+        self.wasStopped = wasStopped
         self.highscore = UserDefaults.standard.integer(forKey: highscoreKey)
         self.balance = UserDefaults.standard.integer(forKey: balanceKey) + score
+        super.init(size: size)
+        
         UserDefaults.standard.set(balance, forKey: balanceKey)
         
         if self.score > self.highscore {
@@ -41,7 +44,11 @@ class GameOverScene: SKScene {
     //MARK: - Lifecycle
     
     override func didMove(to view: SKView) {
-        BackgroundMusicManager.shared.setupBackgroundMusic(forScene: self, withFiles: ["burnedOut", "gameOver"])
+        if wasStopped {
+            BackgroundMusicManager.shared.setupBackgroundMusic(forScene: self, withFiles: ["startBackgroundMusic"], repeatForever: true)
+        } else {
+            BackgroundMusicManager.shared.setupBackgroundMusic(forScene: self, withFiles: ["burnedOut", "gameOver"])
+        }
         setupBGnode()
         setupAfterGameNode()
     }
@@ -63,7 +70,13 @@ class GameOverScene: SKScene {
 extension GameOverScene {
     
     private func setupBGnode() {
-        bgNode = SKSpriteNode(imageNamed: "boss")
+        if wasStopped {
+            let bgName = UserDefaults.standard.string(forKey: bgKey) ?? "background1"
+            bgNode = SKSpriteNode(imageNamed: bgName)
+        } else {
+            bgNode = SKSpriteNode(imageNamed: "boss")
+        }
+        
         bgNode.zPosition = -1.0
         bgNode.position = CGPoint(x: frame.midX, y: frame.midY)
         let aspectRatio = bgNode.size.width / bgNode.size.height
@@ -76,7 +89,11 @@ extension GameOverScene {
         afterGameNode.zPosition = 1.0
         let size = afterGameNode.calculateAccumulatedFrame().size
         
-        afterGameNode.position = CGPoint(x: frame.midX, y: size.height/2 + 15)
+        if wasStopped {
+            afterGameNode.position = CGPoint(x: frame.midX, y: size.height/2 + 80)
+        } else {
+            afterGameNode.position = CGPoint(x: frame.midX, y: size.height/2 + 15)
+        }
         addChild(afterGameNode)
     }
 }

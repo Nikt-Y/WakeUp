@@ -9,22 +9,23 @@ import SpriteKit
 
 class HomeScene: SKScene {
     //MARK: - Properties
-    private var bgNode: SKSpriteNode!
-    private var playBG: SKSpriteNode!
-    private var tutorialBtn: MyButton!
-    private var easyModeBtn: MyButton!
-    private var mediumModeBtn: MyButton!
-    private var hardModeBtn: MyButton!
-    private var shopBtn: MyButton!
+    private var bgNode = SKSpriteNode()
+    private var playBG = SKSpriteNode()
+    private var tutorialBtn = MyButton()
+    private var easyModeBtn = MyButton()
+    private var mediumModeBtn = MyButton()
+    private var hardModeBtn = MyButton()
+    private var shopBtn = MyButton()
     
     //MARK: - Settings
-    private var highscore: Int = 0
+    private let highscore: Int
     
     //MARK: - Initializes
     override init(size: CGSize) {
+        self.highscore = UserDefaults.standard.integer(forKey: highscoreKey)
+
         super.init(size: size)
         
-        self.highscore = UserDefaults.standard.integer(forKey: highscoreKey)
     }
     
     required init?(coder aDecoder: NSCoder) {

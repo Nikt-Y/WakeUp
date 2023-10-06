@@ -9,9 +9,9 @@ import SpriteKit
 
 class DayNode: SKNode {
     //MARK: - Properties
-    private var bg: SKShapeNode!
-    private var dayTitleLabel: SKLabelNode!
-    private var dayNumLabel: SKLabelNode!
+    private var bg = SKShapeNode()
+    private var dayTitleLabel = SKLabelNode()
+    private var dayNumLabel = SKLabelNode()
     
     //MARK: - Settings
     private(set) var day: Int = 1

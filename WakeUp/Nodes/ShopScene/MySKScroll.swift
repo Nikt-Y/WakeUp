@@ -9,17 +9,22 @@ import SpriteKit
 
 class MySKScroll: SKNode {
     //MARK: - Properties
-    private var node: SKSpriteNode!
-    private var topLine: SKSpriteNode!
-    private var crop: SKCropNode!
-    private var content: SKNode!
-    private var size: CGSize!
+    private var node = SKSpriteNode()
+    private var topLine = SKSpriteNode()
+    private var crop = SKCropNode()
+    private var content = SKNode()
+    private var size = CGSize()
     private var scrollSize: CGFloat = 0
-    private var offset: CGFloat!
+    private var offset: CGFloat = 0
     private var row: CGFloat = 0
     private var nodeCount: CGFloat = 0
-    
+
     //MARK: - Initializes
+    override init() {
+        super.init()
+        isUserInteractionEnabled = true
+    }
+    
     init(size: CGSize, offset: CGFloat) {
         super.init()
         

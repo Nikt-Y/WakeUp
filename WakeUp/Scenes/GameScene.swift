@@ -10,18 +10,18 @@ import GameplayKit
 
 class GameScene: SKScene {
     //MARK: - Properties
-    private var bgNode: SKSpriteNode!
-    private var subBGNode: SKSpriteNode!
+    private var bgNode = SKSpriteNode()
+    private var subBGNode = SKSpriteNode()
     private var bedrooms: [BedroomNode] = []
-    private(set) var customClock: CustomClockNode!
-    private var dayNode: DayNode!
-    private var scoreNode: ScoreNode!
-    private var speedSettingsNode: SpeedSettingsNode!
-    private var blackoutNode: SKShapeNode!
-    private var stopBtn: MyButton!
-    private var alertNode: AlertNode!
-    private var questionBtn: MyButton!
-    private var tutorial: SKSpriteNode!
+    private(set) var customClock = CustomClockNode()
+    private var dayNode = DayNode()
+    private var scoreNode = ScoreNode()
+    private var speedSettingsNode = SpeedSettingsNode()
+    private var blackoutNode = SKShapeNode()
+    private var stopBtn = MyButton()
+    private var alertNode = AlertNode()
+    private var questionBtn = MyButton()
+    private var tutorial = SKSpriteNode()
     
     //MARK: - Settings
     private(set) var bedroomsCount: Int!
@@ -212,7 +212,7 @@ extension GameScene {
                 self.setTimeSpeed(newSpeed: -2)
             },
             acceptAction: {
-                let scene = GameOverScene(size: screenSize, score: self.scoreNode.score, bedroomsCount: self.bedroomsCount)
+                let scene = GameOverScene(size: screenSize, score: self.scoreNode.score, bedroomsCount: self.bedroomsCount, wasStopped: true)
                 scene.scaleMode = .aspectFill
                 self.view?.presentScene(scene, transition: .crossFade(withDuration: 0.5))
             })

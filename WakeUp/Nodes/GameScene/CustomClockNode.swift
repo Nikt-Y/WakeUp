@@ -10,8 +10,8 @@ import SpriteKit
 class CustomClockNode: SKNode {
     
     //MARK: - Properties
-    private var timeLabel: SKLabelNode!
-    private var bg: SKShapeNode!
+    private var timeLabel = SKLabelNode()
+    private var bg = SKShapeNode()
     
     // need for time transition
     private struct TimeTransition {

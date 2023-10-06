@@ -9,9 +9,9 @@ import SpriteKit
 
 class BalanceNode: SKNode {
     //MARK: - Properties
-    private var bg: SKShapeNode!
-    private var balanceLabel: SKLabelNode!
-    private var slepsCoinsNode: SKSpriteNode!
+    private var bg = SKShapeNode()
+    private var balanceLabel = SKLabelNode()
+    private var slepsCoinsNode = SKSpriteNode()
     
     //MARK: - Settings
     private(set) var balance: Int = 0 {

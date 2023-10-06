@@ -9,11 +9,11 @@ import SpriteKit
 
 class ShopScene: SKScene {
     //MARK: - Properties
-    private var bgNode: SKSpriteNode!
-    private var backBtn: MyButton!
-    private var balanceNode: BalanceNode!
-    private var scrollNode: MySKScroll!
-    private var alertNode: AlertNode!
+    private var bgNode = SKSpriteNode()
+    private var backBtn = MyButton()
+    private var balanceNode = BalanceNode()
+    private var scrollNode = MySKScroll()
+    private var alertNode = AlertNode()
     private var goods: [Good] = []
     
     //MARK: - Settings

@@ -9,9 +9,9 @@ import SpriteKit
 
 class ScoreNode: SKNode {
     //MARK: - Properties
-    private var bg: SKShapeNode!
-    private var scoreLabel: SKLabelNode!
-    private var slepsCoinsNode: SKSpriteNode!
+    private var bg = SKShapeNode()
+    private var scoreLabel = SKLabelNode()
+    private var slepsCoinsNode = SKSpriteNode()
     
     //MARK: - Settings
     private(set) var score: Int = 0 {

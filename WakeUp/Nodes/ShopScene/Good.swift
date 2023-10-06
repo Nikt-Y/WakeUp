@@ -11,15 +11,15 @@ class Good: SKNode {
     //MARK: - Properties
     var action: (() -> ())?
 
-    private var bg: SKShapeNode!
-    private var goodImage: SKSpriteNode!
-    private var goodTypeLabel: SKLabelNode!
-    private var goodNameLabel: SKLabelNode!
-    private var costLabel: SKLabelNode!
+    private var bg = SKShapeNode()
+    private var goodImage = SKSpriteNode()
+    private var goodTypeLabel = SKLabelNode()
+    private var goodNameLabel = SKLabelNode()
+    private var costLabel = SKLabelNode()
     private(set) var cost: Int = 0
     private(set) var status: GoodStatus = .locked
     private(set) var type: GoodType = .background
-    private var shopScene: ShopScene!
+    private var shopScene: ShopScene
     
     private var isInside = false {
         didSet {
@@ -29,13 +29,14 @@ class Good: SKNode {
     
     // MARK: - Initializers
     init(shopScene: ShopScene, type: GoodType,goodName: String, image: String, cost: Int, status: GoodStatus) {
-        super.init()
         self.shopScene = shopScene
         self.status = status
-        self.name = goodName
         self.cost = cost
         self.type = type
         
+        super.init()
+        self.name = goodName
+
         setupBg()
         setupImage(image: image)
         setupTypeLabel()
@@ -66,7 +67,7 @@ class Good: SKNode {
         
         if isInside && !touchMoved {
             isInside = false
-            if let act = action {
+            if action != nil {
                 onSelect()
             }
         }

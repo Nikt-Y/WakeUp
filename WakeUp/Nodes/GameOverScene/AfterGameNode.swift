@@ -10,23 +10,23 @@ import SpriteKit
 class AfterGameNode: SKNode {
     
     //MARK: - Properties
-    private var node: SKShapeNode!
-    private var gameOverLabel: SKLabelNode!
-    private var scoreTextLabel: SKLabelNode!
-    private var scoreLabel: SKLabelNode!
-    private var highscoreTextLabel: SKLabelNode!
-    private var highscoreLabel: SKLabelNode!
-    private var balanceTextLabel: SKLabelNode!
-    private var balanceLabel: SKLabelNode!
-    private var slepsCoinsNode: SKSpriteNode!
-    private var homeBtn: SKSpriteNode!
-    private var playAgainBtn: SKSpriteNode!
+    private var node = SKShapeNode()
+    private var gameOverLabel = SKLabelNode()
+    private var scoreTextLabel = SKLabelNode()
+    private var scoreLabel = SKLabelNode()
+    private var highscoreTextLabel = SKLabelNode()
+    private var highscoreLabel = SKLabelNode()
+    private var balanceTextLabel = SKLabelNode()
+    private var balanceLabel = SKLabelNode()
+    private var slepsCoinsNode = SKSpriteNode()
+    private var homeBtn = SKSpriteNode()
+    private var playAgainBtn = SKSpriteNode()
     
     // MARK: - Settings
     private var score: Int = 0
     private var highscore: Int = 0
     private var balance: Int = 0
-    private var gameOverScene: GameOverScene!
+    private var gameOverScene: GameOverScene?
     
     private var isHome = false {
         didSet {
@@ -41,12 +41,17 @@ class AfterGameNode: SKNode {
     }
     
     //MARK: - Initializes
-    init(score: Int, highscore: Int, balance: Int, gameOverScene: GameOverScene) {
+    override init() {
         super.init()
+        isUserInteractionEnabled = true
+    }
+    
+    init(score: Int, highscore: Int, balance: Int, gameOverScene: GameOverScene) {
         self.score = score
         self.highscore = highscore
         self.balance = balance
         self.gameOverScene = gameOverScene
+        super.init()
         
         isUserInteractionEnabled = true
         
@@ -84,11 +89,11 @@ class AfterGameNode: SKNode {
         super.touchesMoved(touches, with: event)
         guard let touch = touches.first else { return }
         
-        if let parent = homeBtn?.parent {
+        if let parent = homeBtn.parent {
             isHome = homeBtn.contains(touch.location(in: parent))
         }
         
-        if let parent = playAgainBtn?.parent {
+        if let parent = playAgainBtn.parent {
             isAgain = playAgainBtn.contains(touch.location(in: parent))
         }
     }
@@ -100,14 +105,14 @@ class AfterGameNode: SKNode {
             isHome = false
             let scene = HomeScene(size: screenSize)
             scene.scaleMode = .aspectFill
-            gameOverScene.view?.presentScene(scene, transition: .crossFade(withDuration: 0.5))
+            gameOverScene?.view?.presentScene(scene, transition: .crossFade(withDuration: 0.5))
         }
         
         if isAgain {
             isAgain = false
-            let scene = GameScene(size: screenSize, bedroomsCount: gameOverScene.bedroomsCount)
+            let scene = GameScene(size: screenSize, bedroomsCount: gameOverScene?.bedroomsCount ?? 1)
             scene.scaleMode = .aspectFill
-            gameOverScene.view?.presentScene(scene, transition: .crossFade(withDuration: 0.5))
+            gameOverScene?.view?.presentScene(scene, transition: .crossFade(withDuration: 0.5))
         }
     }
 }

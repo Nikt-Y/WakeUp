@@ -104,7 +104,6 @@
 			children = (
 				7207D4C02A8103E1006D532A /* BedroomModels.swift */,
 				7288DE9A2A9BB42000FEB8AB /* GoodModels.swift */,
-				7288DE9C2A9CE7F400FEB8AB /* BackgroundMusicManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -156,6 +155,14 @@
 			path = ShopScene;
 			sourceTree = "<group>";
 		};
+		7288DEB42A9E699400FEB8AB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7288DE9C2A9CE7F400FEB8AB /* BackgroundMusicManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		72F2B9D22A6D91F000A3B83E = {
 			isa = PBXGroup;
 			children = (
@@ -175,11 +182,12 @@
 		72F2B9DD2A6D91F000A3B83E /* WakeUp */ = {
 			isa = PBXGroup;
 			children = (
-				72F2B9F52A7072F100A3B83E /* Delegates */,
-				7207D4C22A8422A4006D532A /* MyUtils */,
 				72F2B9E02A6D91F000A3B83E /* GameScene.sks */,
 				72F2B9E22A6D91F000A3B83E /* Actions.sks */,
+				72F2B9F52A7072F100A3B83E /* Delegates */,
+				7207D4C22A8422A4006D532A /* MyUtils */,
 				72F2BA082A78438F00A3B83E /* Extensions */,
+				7288DEB42A9E699400FEB8AB /* Services */,
 				7207D4BF2A8103C2006D532A /* Models */,
 				72F2BA052A7319C300A3B83E /* Nodes */,
 				72F2B9F62A70731900A3B83E /* Scenes */,
@@ -203,8 +211,8 @@
 			children = (
 				72F2B9E42A6D91F000A3B83E /* GameScene.swift */,
 				7207D4C92A94B042006D532A /* GameOverScene.swift */,
-				7207D4CF2A96A428006D532A /* HomeScene.swift */,
 				727F936B2A9A146F00EDB486 /* ShopScene.swift */,
+				7207D4CF2A96A428006D532A /* HomeScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -264,10 +272,10 @@
 		72F2BA052A7319C300A3B83E /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				7240AD5D2A98A825000E7D48 /* GameScene */,
+				7240AD5E2A98A82C000E7D48 /* GameOverScene */,
 				727F936D2A9A2EB700EDB486 /* ShopScene */,
 				727F936A2A9A0C0C00EDB486 /* SomeScenes */,
-				7240AD5E2A98A82C000E7D48 /* GameOverScene */,
-				7240AD5D2A98A825000E7D48 /* GameScene */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";

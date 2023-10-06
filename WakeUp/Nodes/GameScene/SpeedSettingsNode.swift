@@ -9,22 +9,27 @@ import SpriteKit
 
 class SpeedSettingsNode: SKNode {
     //MARK: - Properties
-    private var node: SKShapeNode!
-    private var label05: SKLabelNode!
-    private var label1: SKLabelNode!
-    private var label2: SKLabelNode!
-    private var pauseBtn: SKSpriteNode!
+    private var node = SKShapeNode()
+    private var label05 = SKLabelNode()
+    private var label1 = SKLabelNode()
+    private var label2 = SKLabelNode()
+    private var pauseBtn = SKSpriteNode()
     
     //MARK: - Settings
     private var isRunning: Bool = true
-    var gameScene: GameScene!
+    var gameScene: GameScene?
     
     //MARK: - Initializes
+    override init() {
+        super.init()
+        isUserInteractionEnabled = true
+    }
+    
     init(gameScene: GameScene) {
+        self.gameScene = gameScene
         super.init()
         
         isUserInteractionEnabled = true
-        self.gameScene = gameScene
         setupNode()
         setupLabelsAndButtons()
         setNewSpeed(nodeName: "x1")
@@ -37,7 +42,6 @@ class SpeedSettingsNode: SKNode {
     //MARK: - Lifecycle
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        guard (gameScene != nil) else { return }
         guard let touch = touches.first else { return }
         let node = atPoint(touch.location(in: self))
         setNewSpeed(nodeName: node.name ?? "")
@@ -121,13 +125,13 @@ extension SpeedSettingsNode {
         setColorForButton(btnName: nodeName)
         switch nodeName {
         case "x0.5":
-            gameScene.setTimeSpeed(newSpeed: 1)
+            gameScene?.setTimeSpeed(newSpeed: 1)
         case "x1":
-            gameScene.setTimeSpeed(newSpeed: 2)
+            gameScene?.setTimeSpeed(newSpeed: 2)
         case "x2":
-            gameScene.setTimeSpeed(newSpeed: 4)
+            gameScene?.setTimeSpeed(newSpeed: 4)
         case "pause":
-            gameScene.setTimeSpeed(newSpeed: 0)
+            gameScene?.setTimeSpeed(newSpeed: 0)
         default:
             break
         }

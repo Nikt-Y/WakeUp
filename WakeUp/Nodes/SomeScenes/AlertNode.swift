@@ -9,26 +9,31 @@ import SpriteKit
 
 class AlertNode: SKNode {
     //MARK: - Properties
-    private var blackout: SKShapeNode!
-    private var node: SKShapeNode!
-    private var headerNode: SKLabelNode!
-    private var messageNode: SKLabelNode!
-    private var cancelBtn: MyButton!
-    private var acceptBtn: MyButton!
+    private var blackout = SKShapeNode()
+    private var node = SKShapeNode()
+    private var headerNode = SKLabelNode()
+    private var messageNode = SKLabelNode()
+    private var cancelBtn = MyButton()
+    private var acceptBtn = MyButton()
     
     //MARK: - Settings
-    private var header: String!
-    private var message: String!
-    private var cancelAction: (() -> ())!
-    private var acceptAction: (() -> ())!
+    private var header: String = ""
+    private var message: String = ""
+    private var cancelAction: (() -> ()) = {}
+    private var acceptAction: (() -> ()) = {}
     
     //MARK: - Initializes
-    init(message: String, cancelAction: @escaping () -> (), acceptAction: @escaping () -> (), header: String = "Attention!") {
+    override init() {
         super.init()
+        isUserInteractionEnabled = true
+    }
+    
+    init(message: String, cancelAction: @escaping () -> (), acceptAction: @escaping () -> (), header: String = "Attention!") {
         self.header = header
         self.message = message
         self.acceptAction = acceptAction
         self.cancelAction = cancelAction
+        super.init()
 
         isUserInteractionEnabled = true
         setupBlackout()

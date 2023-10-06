@@ -11,9 +11,9 @@ class MyButton: SKNode {
     
     // MARK: - Properties
     var action: (() -> ())?
-    private var rectangle: SKShapeNode!
-    private var label: SKLabelNode!
-    private var spriteNode: SKSpriteNode!
+    private var rectangle = SKShapeNode()
+    private var label = SKLabelNode()
+    private var spriteNode = SKSpriteNode()
     
     private var isInside = false {
         didSet {
