@@ -47,7 +47,7 @@ class GameOverScene: SKScene {
         if wasStopped {
             BackgroundMusicManager.shared.setupBackgroundMusic(forScene: self, withFiles: ["startBackgroundMusic"], repeatForever: true)
         } else {
-            BackgroundMusicManager.shared.setupBackgroundMusic(forScene: self, withFiles: ["burnedOut", "gameOver"])
+            BackgroundMusicManager.shared.setupBackgroundMusic(forScene: self, withFiles: ["urfired", "gameOver"])
         }
         setupBGnode()
         setupAfterGameNode()
@@ -90,7 +90,7 @@ extension GameOverScene {
         let size = afterGameNode.calculateAccumulatedFrame().size
         
         if wasStopped {
-            afterGameNode.position = CGPoint(x: frame.midX, y: size.height/2 + 80)
+            afterGameNode.position = CGPoint(x: frame.midX, y: size.height/2 + 50)
         } else {
             afterGameNode.position = CGPoint(x: frame.midX, y: size.height/2 + 15)
         }
