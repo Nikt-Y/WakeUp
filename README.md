@@ -1,6 +1,6 @@
 # WakeUp
 
-![Game Logo](/ReadMeFiles/logo.png)
+<img src="/ReadMeFiles/logo.png" width="95" height="95">
 
 ## Overview
 
