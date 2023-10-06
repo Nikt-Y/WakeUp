@@ -23,7 +23,7 @@ class ShopScene: SKScene {
     override init(size: CGSize) {
         super.init(size: size)
         
-        self.balance = UserDefaults.standard.integer(forKey: highscoreKey)
+        self.balance = UserDefaults.standard.integer(forKey: balanceKey)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -92,35 +92,35 @@ extension ShopScene {
     
     private func setupGoods() {
         let good1Status = getStatus(num: UserDefaults.standard.integer(forKey: keyBgSunrise1))
-        let good1 = Good(shopScene: self, type: .background, goodName: keyBgSunrise1, image: "sunrise1Little", cost: 5, status: good1Status)
+        let good1 = Good(shopScene: self, type: .background, goodName: keyBgSunrise1, image: "sunrise1Little", cost: 1, status: good1Status)
         good1.action = { [self] in
             bgNode.texture = SKTexture(imageNamed: "sunrise1")
             UserDefaults.standard.set("sunrise1", forKey: bgKey)
         }
         
         let good2Status = getStatus(num: UserDefaults.standard.integer(forKey: keyBgSunrise2))
-        let good2 = Good(shopScene: self, type: .background, goodName: keyBgSunrise2, image: "sunrise2Little", cost: 2, status: good2Status)
+        let good2 = Good(shopScene: self, type: .background, goodName: keyBgSunrise2, image: "sunrise2Little", cost: 20, status: good2Status)
         good2.action = { [self] in
             bgNode.texture = SKTexture(imageNamed: "sunrise2")
             UserDefaults.standard.set("sunrise2", forKey: bgKey)
         }
         
         let good3Status = getStatus(num: UserDefaults.standard.integer(forKey: keyBgFutureCity))
-        let good3 = Good(shopScene: self, type: .background, goodName: keyBgFutureCity, image: "futureCityLittle", cost: 3, status: good3Status)
+        let good3 = Good(shopScene: self, type: .background, goodName: keyBgFutureCity, image: "futureCityLittle", cost: 40, status: good3Status)
         good3.action = { [self] in
             bgNode.texture = SKTexture(imageNamed: "futureCity")
             UserDefaults.standard.set("futureCity", forKey: bgKey)
         }
 
         let good4Status = getStatus(num: UserDefaults.standard.integer(forKey: keyBgCyberCity))
-        let good4 = Good(shopScene: self, type: .background, goodName: keyBgCyberCity, image: "cyberCityLittle", cost: 4, status: good4Status)
+        let good4 = Good(shopScene: self, type: .background, goodName: keyBgCyberCity, image: "cyberCityLittle", cost: 60, status: good4Status)
         good4.action = { [self] in
             bgNode.texture = SKTexture(imageNamed: "cyberCity")
             UserDefaults.standard.set("cyberCity", forKey: bgKey)
         }
 
         let good5Status = getStatus(num: UserDefaults.standard.integer(forKey: keyBgNightCity))
-        let good5 = Good(shopScene: self, type: .background, goodName: keyBgNightCity, image: "nightCityLittle", cost: 5, status: good5Status)
+        let good5 = Good(shopScene: self, type: .background, goodName: keyBgNightCity, image: "nightCityLittle", cost: 80, status: good5Status)
         good5.action = { [self] in
             bgNode.texture = SKTexture(imageNamed: "nightCity")
             UserDefaults.standard.set("nightCity", forKey: bgKey)
@@ -133,25 +133,25 @@ extension ShopScene {
         }
         
         let good7Status = getStatus(num: UserDefaults.standard.integer(forKey: keyStyleNight))
-        let good7 = Good(shopScene: self, type: .style, goodName: keyStyleNight, image: "styleNight", cost: 2, status: good7Status)
+        let good7 = Good(shopScene: self, type: .style, goodName: keyStyleNight, image: "styleNight", cost: 20, status: good7Status)
         good7.action = {
             UserDefaults.standard.set("styleNight", forKey: styleKey)
         }
 
         let good8Status = getStatus(num: UserDefaults.standard.integer(forKey: keyStyleEmpty))
-        let good8 = Good(shopScene: self, type: .style, goodName: keyStyleEmpty, image: "styleEmpty", cost: 3, status: good8Status)
+        let good8 = Good(shopScene: self, type: .style, goodName: keyStyleEmpty, image: "styleEmpty", cost: 40, status: good8Status)
         good8.action = {
             UserDefaults.standard.set("styleEmpty", forKey: styleKey)
         }
 
         let good9Status = getStatus(num: UserDefaults.standard.integer(forKey: keyStyleSunrise))
-        let good9 = Good(shopScene: self, type: .style, goodName: keyStyleSunrise, image: "styleSunrise", cost: 4, status: good9Status)
+        let good9 = Good(shopScene: self, type: .style, goodName: keyStyleSunrise, image: "styleSunrise", cost: 60, status: good9Status)
         good9.action = {
             UserDefaults.standard.set("styleSunrise", forKey: styleKey)
         }
 
         let good10Status = getStatus(num: UserDefaults.standard.integer(forKey: keyStyleRandom))
-        let good10 = Good(shopScene: self, type: .style, goodName: keyStyleRandom, image: "styleRandom", cost: 5, status: good10Status)
+        let good10 = Good(shopScene: self, type: .style, goodName: keyStyleRandom, image: "styleRandom", cost: 80, status: good10Status)
         good10.action = {
             UserDefaults.standard.set("styleRandom", forKey: styleKey)
         }

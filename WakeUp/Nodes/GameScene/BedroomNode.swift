@@ -216,7 +216,11 @@ extension BedroomNode {
                 self.run(.playSoundFileNamed("success.mp3", waitForCompletion: false))
             } else {
                 startStatusAnimation(status: stage)
-                gameScene.addScore(by: 2)
+                if stage == .excellent {
+                    gameScene.addScore(by: 2)
+                } else {
+                    gameScene.addScore(by: 1)
+                }
                 self.run(.playSoundFileNamed("success.mp3", waitForCompletion: false))
             }
         } else {

@@ -16,7 +16,11 @@ class BalanceNode: SKNode {
     //MARK: - Settings
     private(set) var balance: Int = 0 {
         didSet {
-            balanceLabel.text = "\(balance)"
+            if balance > 9999 {
+                balanceLabel.text = "rich"
+            } else {
+                balanceLabel.text = "\(balance)"
+            }
         }
     }
     
