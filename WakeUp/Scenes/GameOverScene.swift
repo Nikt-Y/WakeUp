@@ -47,7 +47,7 @@ class GameOverScene: SKScene {
         if wasStopped {
             BackgroundMusicManager.shared.setupBackgroundMusic(forScene: self, withFiles: ["startBackgroundMusic"], repeatForever: true)
         } else {
-            BackgroundMusicManager.shared.setupBackgroundMusic(forScene: self, withFiles: ["urfired", "gameOver"])
+            BackgroundMusicManager.shared.setupBackgroundMusic(forScene: self, withFiles: ["fired", "gameOver"])
         }
         setupBGnode()
         setupAfterGameNode()
