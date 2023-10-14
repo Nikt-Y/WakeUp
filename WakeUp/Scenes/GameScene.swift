@@ -94,7 +94,7 @@ extension GameScene {
 extension GameScene {
     
     private func addBG() {
-        let bgName = UserDefaults.standard.string(forKey: bgKey) ?? "background1"
+        let bgName = UserDefaults.standard.string(forKey: bgKey) ?? "sunrise1"
         bgNode = SKSpriteNode(imageNamed: bgName)
         bgNode.zPosition = -1.0
         bgNode.position = CGPoint(x: frame.midX, y: frame.midY)
@@ -200,7 +200,7 @@ extension GameScene {
         stopBtn.zPosition = 1.0
         let sizeSelf = stopBtn.calculateAccumulatedFrame().size
         let sizeScoreNode = scoreNode.calculateAccumulatedFrame().size
-        stopBtn.position = CGPoint(x: subBGNode.size.width/2 - sizeSelf.width/2, y: scoreNode.position.y + sizeScoreNode.height/2 + sizeSelf.height/2 + 1)
+        stopBtn.position = CGPoint(x: subBGNode.size.width/2 - sizeSelf.width/2, y: scoreNode.position.y + sizeScoreNode.height/2 + sizeSelf.height/2)
         subBGNode.addChild(stopBtn)
     }
     

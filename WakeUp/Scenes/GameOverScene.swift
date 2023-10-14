@@ -71,7 +71,7 @@ extension GameOverScene {
     
     private func setupBGnode() {
         if wasStopped {
-            let bgName = UserDefaults.standard.string(forKey: bgKey) ?? "background1"
+            let bgName = UserDefaults.standard.string(forKey: bgKey) ?? "sunrise1"
             bgNode = SKSpriteNode(imageNamed: bgName)
         } else {
             bgNode = SKSpriteNode(imageNamed: "boss")
