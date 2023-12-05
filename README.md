@@ -1,8 +1,12 @@
 # WakeUp
 
-<img src="/ReadMeFiles/logo.png" width="95" height="95">
+<a href="https://apps.apple.com/us/app/wake-up-game/id6468936844">
+  <img src="/ReadMeFiles/logo.png" width="95" height="95">
+</a>
 
 ## Overview
+
+**[Download WakeUp from the Apple App Store](https://apps.apple.com/us/app/wake-up-game/id6468936844)**
 
 Welcome to **WakeUp**, a unique game where you serve as an alarm clock. Your mission isn't just to wake people up on time, but also in the right sleep phase. The game is built with SpriteKit, and it introduces an educational angle to entertainment.
 
